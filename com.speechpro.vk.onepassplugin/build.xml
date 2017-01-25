@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project name="One Pass Plugin" default="build.onepassplugin.connector" basedir=".">
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="build.onepassplugin.connector" depends="depends" description="description">
+    	<property name="classpath" value="${jar.scertcommon};${jar.scert};${jar.httpclient};${jar.vkivrclient}"/>
+    	<property name="classes.dir" value="classes"/>
+		<echo>Classpath:  ${classpath}</echo>
+    	
+    	<!-- Create the build destination -->
+    	<mkdir dir="${dir.tempbuild}"/>
+    	
+    	<!-- compile the classes -->
+		<javac includeantruntime="false"
+			srcdir="${dir.source}" 
+			destdir="${dir.tempbuild}"
+         	classpath="${classpath}"
+			source="1.7"
+			target="1.7"
+         	debug="on" />		
+
+    	<!-- jar it -->
+    	<jar destfile="${jar.name}">
+    		<fileset dir="${dir.source}" />
+    	</jar>
+    	<!--jar destfile="${jar.name}"
+    	            basedir="${classes.dir}"
+    	            includes="**"
+    	/-->
+    	
+    	
+    	<!-- cleanup -->
+    	<delete dir="${dir.tempbuild}" />
+    </target>
+
+	<!--
+		Init target for defining properties.
+	 -->
+    <target name="depends">
+    	
+    	<!-- The name of the JAR that will be built.-->
+    	<!-- property name="jarname.onepassplugin" value="onepassplugin.jar"/-->
+    	
+    	<property name="dir.tempbuild" value="tmp.build"/>
+    	<property name="dir.source" value="src"/>
+
+    	<property name="dd.lib.path" value="${eclipse.home.dir}/plugins/com.avaya.sce.core_${dd.sce.core.version}/lib"/>
+    	
+    	<property name="project.vk.onepassplugin_ui" value="../com.speechpro.vk.onepassplugin_ui"/>
+    	
+    	<property name="jar.name" value="C:/Users/sadurtinova/workspace32_backup/onepassplugin.jar"/>
+    	<property name="jar.scert" value="${dd.lib.path}/scert.jar"/>
+    	<property name="jar.scertcommon" value="${dd.lib.path}/scertcommon.jar"/>
+    	<property name="jar.onepassplugin" value="${project.onepassplugin_ui}/data/${jarname.onepassplugin}"/>
+    	
+    	<property name="externals.dir" value="C:/Users/sadurtinova/workspace32_backup/externals"/>
+    	<property name="jar.vkivrclient" value="${externals.dir}/voicekey-ivr-client-1.0.1.jar"/>
+    	<property name="jar.httpclient" value="${externals.dir}/httpcomponents-client-4.5.2/lib/httpclient-4.5.2.jar"/>
+
+    </target>
+
+</project>
+

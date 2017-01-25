@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    
+   <!--
+   Define our runtime resouces and where they go.
+   -->
+   <extension
+         point="com.avaya.sce.core.pluggableConnector">
+      <configuration
+      		displayName="STC VoiceKey"
+            icon="icons/stc.jpg"
+            connectorId="com">
+            <item
+                  destination="PROJECT_WEBINF"
+                  versionClass="onepassplugin.Version"
+                  versionMethod="getVersion"
+                  updateClasspath="true"
+                  resourceName="data/vk_plug32.jar">
+            </item>            
+      </configuration>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Enroll Person operation -->
+   
+   <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.personexists.CodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.personexists.FlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.personexists.CoreEventProcessor"
+            connectorId="com"
+            id="ui.person">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Get Person item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.personexists.EditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Get Person"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Get Person"
+            id="ui.person">
+        </dataConnectorUI>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Enroll Person operation -->
+   
+   <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.enrollment.PersonEnrollmentCodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.enrollment.PersonEnrollmentFlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.enrollment.PersonEnrollmentCoreEventProcessor"
+            connectorId="com"
+            id="ui.personenrollment">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Enroll Person item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.enrollment.PersonEnrollmentEditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Enroll Person"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Enroll Person"
+            id="ui.personenrollment">
+        </dataConnectorUI>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Send Model Sample operation -->
+   <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.sendmodelsample.SendSampleCodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.sendmodelsample.SendSampleFlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.sendmodelsample.SendSampleCoreEventProcessor"
+            connectorId="com"
+            id="ui.sendmodelsample">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Send Model Sample item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.sendmodelsample.SendSampleEditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Send Model Sample"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Send Model Sample"
+            id="ui.sendmodelsample">
+        </dataConnectorUI>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Start Verification operation -->
+   <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.startverification.StartCodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.startverification.StartFlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.startverification.StartCoreEventProcessor"
+            connectorId="com"
+            id="ui.startverification">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Start Verification item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.startverification.StartEditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Start Verification"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Start Verification"
+            id="ui.startverification">
+        </dataConnectorUI>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Send Verification Sample operation -->
+   
+   <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.sendverificationsample.CodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.sendverificationsample.FlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.sendverificationsample.CoreEventProcessor"
+            connectorId="com"
+            id="ui.sendsampleverification">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Send Verification Sample item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.sendverificationsample.EditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Send Verification Sample"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Send Verification Sample"
+            id="ui.sendsampleverification">
+        </dataConnectorUI>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Send Verification Results operation -->
+   
+         <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.verificationresults.CodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.verificationresults.FlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.verificationresults.CoreEventProcessor"
+            connectorId="com"
+            id="ui.verificationresults">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Verification Results item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.verificationresults.EditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Verification Results"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Verification Results"
+            id="ui.verificationresults">
+        </dataConnectorUI>
+   </extension>
+   
+   <!-- Define the model, code generator, validator and event processor for the Send Delete Person operation -->
+   
+    <extension
+         point="com.avaya.sce.callflow.dataConnector">
+      <dataConnector
+            CodeGenerator="com.speechpro.vk.onepassplugin.ui.deleteperson.CodeGen"
+            ModelClass="com.speechpro.vk.onepassplugin.ui.deleteperson.FlowItem"
+            ProjectEventProcessor="com.speechpro.vk.onepassplugin.ui.deleteperson.CoreEventProcessor"
+            connectorId="com"
+            id="ui.deleteperson">
+        </dataConnector>
+   </extension>
+
+   <!-- Define the UI classes that control the propertied available for the Delete Person item -->
+   <extension
+         point="com.avaya.sce.callflow.ui.dataConnectorUI">
+      <dataConnectorUI
+            ContextHelpID=""
+            EditPartClass="com.speechpro.vk.onepassplugin.ui.deleteperson.EditPart"
+            PaletteItemCategory="STC VoiceKey"
+            PaletteItemDescription="Delete Person"
+            PaletteItemIcon="icons/key.png"
+            PaletteItemName="Delete Person"
+            id="ui.deleteperson">
+        </dataConnectorUI>
+   </extension>
+   
+</plugin>
+
